@@ -45,6 +45,7 @@ dependencies:
   dio: ^5.0.0
   flutter_dotenv: ^5.0.2
   jwt_decoder: ^2.0.1
+  macos_ui: ^1.10.0
 
 dev_dependencies:
   flutter_test:

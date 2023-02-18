@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:mario_nexus/auth/auth_failure.dart';
@@ -29,7 +31,14 @@ class AuthClient {
     final endpoint = dotenv.env['API_KEY'];
     Dio dio = Dio();
     final Response response = await dio.post("$endpoint/auth/login",
-        data: {"email": email, "password": password});
+        options: Options(
+          method: "POST",
+          headers: {
+            "Accept": "application/json",
+          },
+          contentType: "application/json",
+        ),
+        data: jsonEncode({"email": email, "password": password}));
     if (response.statusCode != 200) {
       if (response.statusCode == 429) {
         return left(AuthFailure.server(
@@ -49,8 +58,17 @@ class AuthClient {
       String email, String password) async {
     final endpoint = dotenv.env['API_KEY'];
     Dio dio = Dio();
-    final Response response = await dio.post("$endpoint/auth/register",
-        data: {"email": email, "password": password});
+    final Response response = await dio.post(
+      "$endpoint/auth/register",
+      options: Options(
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+        },
+        contentType: "application/json",
+      ),
+      data: jsonEncode({"email": email, "password": password}),
+    );
     if (response.statusCode != 200) {
       if (response.statusCode == 429) {
         return left(AuthFailure.server(

@@ -2,7 +2,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mario_nexus/auth/auth_failure.dart';
 import 'package:mario_nexus/providers/providers.dart';
 import "package:flutter/cupertino.dart";
-import 'package:mario_nexus/screens/login.dart';
+import 'package:mario_nexus/screens/auth.dart';
+import 'package:mario_nexus/screens/home.dart';
 
 final initializationProvider = FutureProvider(
   (ref) async {
@@ -30,10 +31,8 @@ class _LoadingState extends ConsumerState<Loading> {
       initial: () {
         return Container();
       },
-      unauthenticated: () => const Login(),
-      authenticated: () {
-        return Container();
-      },
+      unauthenticated: () => const Auth(),
+      authenticated: () => const Home(),
       failure: (AuthFailure failure) {
         return Container();
       },
