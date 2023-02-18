@@ -55,13 +55,7 @@ class HomeState extends ConsumerState<Home> {
                       ? FilledButton(
                           onPressed: () async {
                             path.fold((l) => null, (r) async {
-                              await shell.run(
-                                  '''pip install gym_super_mario_bros==7.3.0 nes_py''');
-                              await shell.run(
-                                  '''pip install torch==1.10.1+cu113 torchvision==0.11.2+cu113 torchaudio===0.10.1+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html''');
-                              await shell.run(
-                                  '''pip install stable-baselines3[extra]''');
-                              await shell.run('''python $path''');
+                              await shell.run('''python $r''');
                             });
                           },
                           style: const ButtonStyle(
