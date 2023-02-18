@@ -5,7 +5,8 @@ import 'package:macos_ui/macos_ui.dart';
 import 'package:mario_nexus/providers/providers.dart';
 
 class Auth extends ConsumerStatefulWidget {
-  const Auth({super.key});
+  final bool failed;
+  const Auth({super.key, this.failed = false});
 
   @override
   AuthState createState() => AuthState();
@@ -17,6 +18,37 @@ class AuthState extends ConsumerState<Auth> {
   String _email = "";
   String _password = "";
   bool _login = true;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.failed) {
+      showMacosAlertDialog(
+        context: context,
+        builder: (_) => MacosAlertDialog(
+          appIcon: const FlutterLogo(
+            size: 56,
+          ),
+          title: Text(
+            'Error with Authentication',
+            style: MacosTheme.of(context).typography.headline,
+          ),
+          message: Text(
+            'There was an error trying to authenticate your account. Please try again.',
+            textAlign: TextAlign.center,
+            style: MacosTheme.of(context).typography.headline,
+          ),
+          primaryButton: PushButton(
+            buttonSize: ButtonSize.large,
+            child: const Text('Okay'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

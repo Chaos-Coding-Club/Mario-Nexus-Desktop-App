@@ -22,7 +22,6 @@ User _$UserFromJson(Map<String, dynamic> json) {
 mixin _$User {
   int get id => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get modifiedAt => throw _privateConstructorUsedError;
 
@@ -36,12 +35,7 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res, User>;
   @useResult
-  $Res call(
-      {int id,
-      String email,
-      String password,
-      DateTime createdAt,
-      DateTime modifiedAt});
+  $Res call({int id, String email, DateTime createdAt, DateTime modifiedAt});
 }
 
 /// @nodoc
@@ -59,7 +53,6 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   $Res call({
     Object? id = null,
     Object? email = null,
-    Object? password = null,
     Object? createdAt = null,
     Object? modifiedAt = null,
   }) {
@@ -71,10 +64,6 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
               as String,
       createdAt: null == createdAt
           ? _value.createdAt
@@ -94,12 +83,7 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$$_UserCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int id,
-      String email,
-      String password,
-      DateTime createdAt,
-      DateTime modifiedAt});
+  $Res call({int id, String email, DateTime createdAt, DateTime modifiedAt});
 }
 
 /// @nodoc
@@ -113,7 +97,6 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
   $Res call({
     Object? id = null,
     Object? email = null,
-    Object? password = null,
     Object? createdAt = null,
     Object? modifiedAt = null,
   }) {
@@ -125,10 +108,6 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
               as String,
       createdAt: null == createdAt
           ? _value.createdAt
@@ -148,7 +127,6 @@ class _$_User with DiagnosticableTreeMixin implements _User {
   const _$_User(
       {required this.id,
       required this.email,
-      required this.password,
       required this.createdAt,
       required this.modifiedAt});
 
@@ -159,15 +137,13 @@ class _$_User with DiagnosticableTreeMixin implements _User {
   @override
   final String email;
   @override
-  final String password;
-  @override
   final DateTime createdAt;
   @override
   final DateTime modifiedAt;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'User(id: $id, email: $email, password: $password, createdAt: $createdAt, modifiedAt: $modifiedAt)';
+    return 'User(id: $id, email: $email, createdAt: $createdAt, modifiedAt: $modifiedAt)';
   }
 
   @override
@@ -177,7 +153,6 @@ class _$_User with DiagnosticableTreeMixin implements _User {
       ..add(DiagnosticsProperty('type', 'User'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('email', email))
-      ..add(DiagnosticsProperty('password', password))
       ..add(DiagnosticsProperty('createdAt', createdAt))
       ..add(DiagnosticsProperty('modifiedAt', modifiedAt));
   }
@@ -189,8 +164,6 @@ class _$_User with DiagnosticableTreeMixin implements _User {
             other is _$_User &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.password, password) ||
-                other.password == password) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.modifiedAt, modifiedAt) ||
@@ -200,7 +173,7 @@ class _$_User with DiagnosticableTreeMixin implements _User {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, email, password, createdAt, modifiedAt);
+      Object.hash(runtimeType, id, email, createdAt, modifiedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -220,7 +193,6 @@ abstract class _User implements User {
   const factory _User(
       {required final int id,
       required final String email,
-      required final String password,
       required final DateTime createdAt,
       required final DateTime modifiedAt}) = _$_User;
 
@@ -230,8 +202,6 @@ abstract class _User implements User {
   int get id;
   @override
   String get email;
-  @override
-  String get password;
   @override
   DateTime get createdAt;
   @override

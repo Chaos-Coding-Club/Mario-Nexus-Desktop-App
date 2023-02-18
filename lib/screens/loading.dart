@@ -4,6 +4,7 @@ import 'package:mario_nexus/providers/providers.dart';
 import "package:flutter/cupertino.dart";
 import 'package:mario_nexus/screens/auth.dart';
 import 'package:mario_nexus/screens/home.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 final initializationProvider = FutureProvider(
   (ref) async {
@@ -29,12 +30,16 @@ class _LoadingState extends ConsumerState<Loading> {
     final authNotifier = ref.watch(authNotifierProvider);
     return authNotifier.when(
       initial: () {
-        return Container();
+        return const SpinKitRing(
+          color: CupertinoColors.white,
+        );
       },
       unauthenticated: () => const Auth(),
       authenticated: () => const Home(),
       failure: (AuthFailure failure) {
-        return Container();
+        return const Auth(
+          failed: true,
+        );
       },
     );
   }
