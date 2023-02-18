@@ -20,6 +20,8 @@ version: 1.0.0+1
 
 msix_config:
   display_name: Mario Nexus
+  app_installer: #<-- app installer configuration
+    publish_folder_path: C:\Users\rahul\Documents
   msix_version: 1.0.0.0
 
 environment:
